@@ -190,7 +190,7 @@ export default function Hero({ start }: { start: boolean }) {
                     "linear-gradient(to top, rgba(13,13,13,0.65), transparent)",
                 }}
               />
-              <p className="absolute bottom-4 left-0 right-0 text-center font-hand text-cheese text-xl md:text-2xl -rotate-1">
+              <p className="absolute bottom-4 left-16 md:left-24 right-0 text-center font-hand text-cheese text-xl md:text-2xl -rotate-1">
                 extra cheese? obviously.
               </p>
             </div>

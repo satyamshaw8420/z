@@ -20,12 +20,15 @@ function Logo({ small }: { small?: boolean }) {
       className="flex items-center group transition-transform duration-300 hover:scale-105"
       aria-label="Zorko Howrah — back to top"
     >
-      <img
+      <motion.img
         src="/logo.png"
         alt="Zorko Brand of Food Lovers"
-        className={`object-contain ${
+        className={`object-contain drop-shadow-lg ${
           small ? "h-8 md:h-10" : "h-12 md:h-16"
         }`}
+        animate={{ y: [0, -4, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+        whileHover={{ scale: 1.1, rotate: [0, -6, 6, -3, 3, 0], transition: { duration: 0.6 } }}
       />
     </button>
   );

@@ -61,13 +61,17 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         <motion.img
           src="/logo.png"
           alt="Zorko Brand of Food Lovers"
-          className="h-28 md:h-40 object-contain mx-auto"
-          initial={staticMode ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          className="h-28 md:h-40 object-contain mx-auto drop-shadow-2xl"
+          initial={staticMode ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5, y: 40 }}
+          animate={staticMode ? { opacity: 1, scale: 1 } : { 
+            opacity: 1, 
+            scale: [0.5, 1.15, 0.95, 1.05, 1],
+            y: 0
+          }}
           transition={
             staticMode
               ? { duration: 0 }
-              : { duration: 0.8, ease: "easeOut" }
+              : { duration: 1.4, times: [0, 0.4, 0.6, 0.8, 1], ease: "easeInOut" }
           }
         />
 
