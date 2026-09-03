@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0d0d0d;
+  --color-coal: #151515;
+  --color-coal2: #1c1a17;
+  --color-zor: #ff6a00;
+  --color-cheese: #ffc928;
+  --color-tomato: #e63920;
+  --color-cream: #f6ebdd;
+  --color-mute: #a9a29a;
+
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-hand: "Caveat", cursive;
+  --font-body: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-zor);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2723;
+  border: 2px solid #0d0d0d;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6a00;
+}
+
+/* ---- signature utilities ---- */
+
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(246, 235, 221, 0.22);
+  color: transparent;
+}
+.text-outline-faint {
+  -webkit-text-stroke: 1px rgba(246, 235, 221, 0.1);
+  color: transparent;
+}
+.text-outline-zor {
+  -webkit-text-stroke: 1.5px rgba(255, 106, 0, 0.5);
+  color: transparent;
+}
+.text-outline-ink {
+  -webkit-text-stroke: 1.5px rgba(13, 13, 13, 0.3);
+  color: transparent;
+}
+
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-dur, 30s) linear infinite;
+}
+
+@keyframes slowzoom {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.09) translateY(-1.5%);
+  }
+}
+.animate-slowzoom {
+  animation: slowzoom 16s ease-in-out infinite alternate;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--tilt, 0deg));
+  }
+}
+.animate-floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes ping-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+.animate-ping-ring {
+  animation: ping-ring 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes blink-line {
+  0%,
+  100% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.animate-scroll-line {
+  animation: blink-line 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  transform-origin: top;
+}
+
+/* dark treatment for the embedded OpenStreetMap */
+.map-dark iframe {
+  filter: invert(0.92) hue-rotate(185deg) saturate(0.32) brightness(0.88)
+    contrast(1.08);
+}
+
+/* dashed ticket edge */
+.ticket-edge {
+  --notch: 14px;
+  mask: radial-gradient(
+      circle at left center,
+      transparent var(--notch),
+      black calc(var(--notch) + 1px)
+    )
+    left / 51% 100% no-repeat,
+    radial-gradient(
+        circle at right center,
+        transparent var(--notch),
+        black calc(var(--notch) + 1px)
+      )
+      right / 51% 100% no-repeat;
+}
+
+/* custom cursor (desktop, motion-ok) */
+.cursor-hidden,
+.cursor-hidden a,
+.cursor-hidden button,
+.cursor-hidden [role="button"],
+.cursor-hidden input,
+.cursor-hidden textarea,
+.cursor-hidden select {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-slowzoom,
+  .animate-spin-slow,
+  .animate-floaty,
+  .animate-ping-ring,
+  .animate-scroll-line {
+    animation: none !important;
+  }
+}
