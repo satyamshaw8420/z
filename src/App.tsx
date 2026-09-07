@@ -32,7 +32,7 @@ function ScrollProgress() {
   });
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-zor origin-left z-[90]"
+      className="fixed top-0  left-0 right-0 h-[3px] bg-zor origin-left z-[90]"
       style={{ scaleX }}
       aria-hidden
     />
